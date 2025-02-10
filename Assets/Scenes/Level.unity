@@ -1301,7 +1301,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1119380917}
+        m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
+        m_MethodName: UpdateLastUsedDevice
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -1880,6 +1892,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1119380915}
   - component: {fileID: 1119380914}
+  - component: {fileID: 1119380916}
+  - component: {fileID: 1119380917}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1915,6 +1929,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1119380916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119380913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7da5c98670e53478e5c0bee0d8039b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyboardIcons:
+  - key: Menu
+    value: {fileID: -477776093, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: Left
+    value: {fileID: 152395226, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: Right
+    value: {fileID: -1391870429, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: Special1
+    value: {fileID: -1073092222, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: Special2
+    value: {fileID: 972818342, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: DirectionUp
+    value: {fileID: 1046333887, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: DirectionDown
+    value: {fileID: -444371662, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: DirectionLeft
+    value: {fileID: 504849942, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: DirectionRight
+    value: {fileID: -788530538, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  - key: Reset
+    value: {fileID: 202421203, guid: ce5ca0078a5f61c44b908c0faf97d65a, type: 3}
+  xBoxIcons: []
+  psIcons: []
+  IconsUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1119380917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1119380913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71bb244174dc26b45bfbfb3a6f17f1e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastUsedDevice: Keybaord
 --- !u!1 &1136609491
 GameObject:
   m_ObjectHideFlags: 0
