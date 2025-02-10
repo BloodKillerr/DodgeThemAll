@@ -24,4 +24,19 @@ public class UIManager : MonoBehaviour
             Instance = this;
         }
     }
+
+    public Sprite GetCorrectIcon(SequenceManager.SequenceItem item)
+    {
+        switch(InputManager.Instance.LastUsedDevice)
+        {
+            case "Keyboard":
+                return keyboardIcons.Find(i => i.key == item.ToString()).value;
+            case "XBox":
+                return xBoxIcons.Find(i => i.key == item.ToString()).value;
+            case "PlayStation":
+                return psIcons.Find(i => i.key == item.ToString()).value;
+            default:
+                return keyboardIcons.Find(i => i.key == item.ToString()).value;
+        }
+    }
 }
