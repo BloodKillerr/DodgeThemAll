@@ -5,13 +5,12 @@ public class PlayerMovement : MonoBehaviour
 {
     public enum PlayerPositionState
     {
-        Center,
         Left,
         Right
     };
 
     private Rigidbody rb;
-    private PlayerPositionState state = PlayerPositionState.Center;
+    private PlayerPositionState state = PlayerPositionState.Left;
 
     [SerializeField] private float moveOffset = 10f;
     public float MoveOffset { get => moveOffset; set => moveOffset = value; }
@@ -46,24 +45,14 @@ public class PlayerMovement : MonoBehaviour
                 {
                     return;
                 }
-                state = PlayerPositionState.Center;
+                state = PlayerPositionState.Right;
                 break;
             case PlayerPositionState.Right:
                 if(direction > 0)
                 {
                     return;
                 }
-                state = PlayerPositionState.Center;
-                break;
-            case PlayerPositionState.Center:
-                if (direction > 0)
-                {
-                    state = PlayerPositionState.Right;
-                }
-                else
-                {
-                    state = PlayerPositionState.Left;
-                }
+                state = PlayerPositionState.Left;
                 break;
         }
 

@@ -21,21 +21,26 @@ public class Wall : MonoBehaviour
         CreateSequenceUI();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
-            if(SequenceManager.Instance.CompareSequences(sequence))
+            Debug.Log("Player Detected");
+            if (SequenceManager.Instance.CompareSequences(sequence))
             {
                 Debug.Log("Correct Sequence!");
                 SequenceManager.Instance.ResetSequence();
-                Destroy(gameObject);
+                Destroy(gameObject.transform.parent.gameObject);
             }
             else
             {
-                Destroy(collision);
+                Destroy(other.gameObject);
                 Debug.Log("Wrong Sequence!");
             }
+        }
+        else
+        {
+            Debug.Log("Player not Detected");
         }
     }
 

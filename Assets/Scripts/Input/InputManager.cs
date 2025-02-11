@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
 
     public string LastUsedDevice { get => lastUsedDevice; set => lastUsedDevice = value; }
 
-    public void Awake()
+    private void Awake()
     {
         if (Instance != null && Instance != this)
         {
