@@ -25,6 +25,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        PointSystem.Instance.PointSystemUpdateEvent.AddListener(UpdatePointSystemUI);
+    }
+
     public Sprite GetCorrectIcon(SequenceManager.SequenceItem item)
     {
         switch(InputManager.Instance.LastUsedDevice)
@@ -38,5 +43,10 @@ public class UIManager : MonoBehaviour
             default:
                 return keyboardIcons.Find(i => i.key == item.ToString()).value;
         }
+    }
+
+    public void UpdatePointSystemUI()
+    {
+
     }
 }

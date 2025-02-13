@@ -31,11 +31,13 @@ public class Wall : MonoBehaviour
                 Debug.Log("Correct Sequence!");
                 SequenceManager.Instance.ResetSequence();
                 Destroy(gameObject.transform.parent.gameObject);
+                PointSystem.Instance.IncreasePoints();
             }
             else
             {
-                Destroy(other.gameObject);
                 Debug.Log("Wrong Sequence!");
+                Destroy(other.gameObject);
+                PointSystem.Instance.SaveMaxPoints();
             }
         }
         else

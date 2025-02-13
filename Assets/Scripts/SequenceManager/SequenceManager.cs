@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SequenceManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class SequenceManager : MonoBehaviour
 
     public static SequenceManager Instance { get; private set; }
 
+    public UnityEvent DifficultyUpdateEvent;
+
     private List<SequenceItem> sequence = new List<SequenceItem>();
 
     private List<GameObject> sequenceItemIconObjects = new List<GameObject>();
@@ -28,6 +31,8 @@ public class SequenceManager : MonoBehaviour
     public List<SequenceItem> Sequence { get => sequence; set => sequence = value; }
 
     public int sequenceMaxSize = 2;
+
+    public float wallSetSpeed = 2f;
 
 
     private void Awake()
@@ -82,5 +87,16 @@ public class SequenceManager : MonoBehaviour
         {
             sequenceItemIconObjects[i].GetComponent<Image>().sprite = UIManager.Instance.GetCorrectIcon(sequence[i]);
         }
+    }
+
+    public void UpdateGameDifficulty()
+    {
+        if(sequenceMaxSize < 8)
+        {
+            sequenceMaxSize++;
+        }
+
+        wallSetSpeed += 2;
+        DifficultyUpdateEvent.Invoke();
     }
 }
