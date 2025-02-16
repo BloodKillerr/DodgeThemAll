@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WallSetMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2f;
+    private float moveSpeed;
 
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 

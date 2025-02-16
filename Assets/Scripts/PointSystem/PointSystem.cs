@@ -11,6 +11,8 @@ public class PointSystem : MonoBehaviour
 
     private int difficultyLevel = 1;
 
+    private string maxPointsKey = "maxPoints";
+
     public UnityEvent PointSystemUpdateEvent;
 
     public static PointSystem Instance { get; private set; }
@@ -29,6 +31,19 @@ public class PointSystem : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (PlayerPrefs.HasKey(maxPointsKey))
+        {
+            maxPoints = PlayerPrefs.GetInt(maxPointsKey);
+            PointSystemUpdateEvent.Invoke();
+        }
+        else
+        {
+            Debug.Log("The highscore is 0");
+        }
+    }
+
     public void IncreasePoints()
     {
         points++;
@@ -38,7 +53,18 @@ public class PointSystem : MonoBehaviour
 
     public void SaveMaxPoints()
     {
-        maxPoints = (maxPoints < points) ? points : maxPoints;
+        if(maxPoints < points)
+        {
+            maxPoints = points;
+            PlayerPrefs.SetInt(maxPointsKey, maxPoints);
+        }
+        PointSystemUpdateEvent.Invoke();
+    }
+
+    public void ResetMaxPoints()
+    {
+        PlayerPrefs.DeleteKey(maxPointsKey);
+        maxPoints = 0;
         PointSystemUpdateEvent.Invoke();
     }
 

@@ -30,9 +30,9 @@ public class SequenceManager : MonoBehaviour
 
     public List<SequenceItem> Sequence { get => sequence; set => sequence = value; }
 
-    public int sequenceMaxSize = 2;
+    public int sequenceMaxSize;
 
-    public float wallSetSpeed = 2f;
+    public float wallSetSpeed;
 
 
     private void Awake()
