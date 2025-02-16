@@ -39,6 +39,7 @@ public class PointSystem : MonoBehaviour
     public void SaveMaxPoints()
     {
         maxPoints = (maxPoints < points) ? points : maxPoints;
+        PointSystemUpdateEvent.Invoke();
     }
 
     private void CheckDifficultyIncrease()

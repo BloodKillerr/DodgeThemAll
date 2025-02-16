@@ -1,13 +1,16 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private List<IconDictionaryEntry> keyboardIcons;
     [SerializeField] private List<IconDictionaryEntry> xBoxIcons;
     [SerializeField] private List<IconDictionaryEntry> psIcons;
+
+    [SerializeField] private TMP_Text pointsText;
+    [SerializeField] private TMP_Text currentMaxText;
 
     public UnityEvent IconsUpdateEvent;
 
@@ -28,11 +31,12 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         PointSystem.Instance.PointSystemUpdateEvent.AddListener(UpdatePointSystemUI);
+        currentMaxText.text = "Highscore: " + PointSystem.Instance.MaxPoints.ToString();
     }
 
     public Sprite GetCorrectIcon(SequenceManager.SequenceItem item)
     {
-        switch(InputManager.Instance.LastUsedDevice)
+        switch (InputManager.Instance.LastUsedDevice)
         {
             case "Keyboard":
                 return keyboardIcons.Find(i => i.key == item.ToString()).value;
@@ -47,6 +51,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePointSystemUI()
     {
-
+        pointsText.text = "Points: " + PointSystem.Instance.Points.ToString();
+        currentMaxText.text = "Highscore: " + PointSystem.Instance.MaxPoints.ToString();
     }
 }
