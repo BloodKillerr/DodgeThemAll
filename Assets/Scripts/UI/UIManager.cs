@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TMP_Text pointsText;
     [SerializeField] private TMP_Text currentMaxText;
 
+    [SerializeField] private CanvasGroup mainMenu;
+
     public UnityEvent IconsUpdateEvent;
 
     public static UIManager Instance { get; private set; }
@@ -53,5 +55,11 @@ public class UIManager : MonoBehaviour
     {
         pointsText.text = "Points: " + PointSystem.Instance.Points.ToString();
         currentMaxText.text = "Highscore: " + PointSystem.Instance.MaxPoints.ToString();
+    }
+
+    public void HideMainMenu()
+    {
+        mainMenu.alpha = 0f;
+        mainMenu.interactable = false;
     }
 }

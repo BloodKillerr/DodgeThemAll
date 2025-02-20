@@ -12,7 +12,7 @@ public class WallSpawner : MonoBehaviour
 
     private void Update()
     {
-        if(timer <= 0f)
+        if(timer <= 0f && !GameManager.Instance.IsPaused)
         {
             Instantiate(wallSetPrefab, transform.position, Quaternion.identity, wallsHolder);
             timer = maxTimer;

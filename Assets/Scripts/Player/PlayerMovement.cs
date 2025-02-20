@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovementEvent(InputAction.CallbackContext context)
     {
-        if(context.performed)
+        if(context.performed && !GameManager.Instance.IsPaused)
         {
             float direction = context.ReadValue<float>();
             MovementCheck(direction);
