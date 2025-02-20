@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody rb;
     private PlayerPositionState state = PlayerPositionState.Left;
+    private AudioSpawner audioSpawner;
 
     [SerializeField] private float moveOffset = 10f;
     public float MoveOffset { get => moveOffset; set => moveOffset = value; }
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSpawner = GetComponent<AudioSpawner>();
     }
 
     private void Update()
@@ -57,5 +59,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         transform.position += new Vector3(moveOffset * direction, 0, 0);
+        audioSpawner.SpawnAudioObject(transform);
     }
 }

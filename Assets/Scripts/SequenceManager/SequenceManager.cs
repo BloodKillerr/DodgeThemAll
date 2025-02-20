@@ -24,6 +24,8 @@ public class SequenceManager : MonoBehaviour
 
     private List<GameObject> sequenceItemIconObjects = new List<GameObject>();
 
+    private AudioSpawner audioSpawner;
+
     [SerializeField] private GameObject sequenceItemPrefab = null;
 
     [SerializeField] private Transform sequenceItemsPlaceholder;
@@ -49,6 +51,7 @@ public class SequenceManager : MonoBehaviour
 
     private void Start()
     {
+        audioSpawner = GetComponent<AudioSpawner>();
         UIManager.Instance.IconsUpdateEvent.AddListener(UpdateAllIcons);
     }
 
@@ -63,6 +66,7 @@ public class SequenceManager : MonoBehaviour
         GameObject go = Instantiate(sequenceItemPrefab, sequenceItemsPlaceholder);
         go.GetComponent<Image>().sprite = UIManager.Instance.GetCorrectIcon(item);
         sequenceItemIconObjects.Add(go);
+        audioSpawner.SpawnAudioObject(Player.Instance.gameObject.transform);
     }
 
     public void ResetSequence()
@@ -74,6 +78,7 @@ public class SequenceManager : MonoBehaviour
 
         sequenceItemIconObjects.Clear();
         sequence.Clear();
+        audioSpawner.SpawnAudioObject(Player.Instance.gameObject.transform);
     }
 
     public bool CompareSequences(List<SequenceItem> other)

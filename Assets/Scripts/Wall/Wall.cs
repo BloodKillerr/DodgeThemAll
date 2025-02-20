@@ -10,12 +10,15 @@ public class Wall : MonoBehaviour
 
     private List<GameObject> sequenceItemIconObjects = new List<GameObject>();
 
+    private AudioSpawner audioSpawner;
+
     [SerializeField] private GameObject sequenceItemPrefab = null;
 
     [SerializeField] private Transform sequenceItemsPlaceholder;
 
     private void Start()
     {
+        audioSpawner = GetComponent<AudioSpawner>();
         sequence = GenerateSequence(SequenceManager.Instance.sequenceMaxSize);
         UIManager.Instance.IconsUpdateEvent.AddListener(UpdateAllIcons);
         CreateSequenceUI();
@@ -39,6 +42,7 @@ public class Wall : MonoBehaviour
                 Destroy(other.gameObject);
                 PointSystem.Instance.SaveMaxPoints();
             }
+            audioSpawner.SpawnAudioObject(Player.Instance.gameObject.transform);
         }
         else
         {

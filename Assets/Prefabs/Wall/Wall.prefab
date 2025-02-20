@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 5105379186293635689}
   - component: {fileID: 9171507530453015337}
   - component: {fileID: 979669183848264920}
+  - component: {fileID: 6631944202112527669}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -360,3 +361,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 3, z: 1}
   m_Center: {x: 0, y: 1.5, z: 0}
+--- !u!114 &6631944202112527669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091630454703659485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b2c6d15e9508da41987eee368518837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSoundObjectPrefab: {fileID: 8801147693137207082, guid: 8db8fbaadaa6ea547937b2f469e58d17, type: 3}
+  destroyDelay: 0.3
