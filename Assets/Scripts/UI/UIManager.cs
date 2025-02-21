@@ -61,5 +61,6 @@ public class UIManager : MonoBehaviour
     {
         mainMenu.alpha = 0f;
         mainMenu.interactable = false;
+        mainMenu.blocksRaycasts = false;
     }
 }
