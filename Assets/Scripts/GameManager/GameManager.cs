@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -10,9 +11,12 @@ public class GameManager : MonoBehaviour
 
     public static GameManager Instance { get; private set; }
 
-    private bool isPaused = true;
+    private bool isPaused = false;
+
+    private bool isPlaying = false;
 
     public bool IsPaused { get => isPaused; set => isPaused = value; }
+    public bool IsPlaying { get => isPlaying; set => isPlaying = value; }
 
     private void Awake()
     {
@@ -40,11 +44,47 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PauseResumeEvent(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            if(isPaused && isPlaying)
+            {
+                isPaused = false;
+                ResumeGame();
+            }
+            else if(!isPaused && isPlaying)
+            {
+                isPaused = true;
+                PauseGame();
+            }
+        }
+    }
+
     public void StartGame()
     {
         Time.timeScale = 1f;
-        isPaused = false;
+        isPlaying = true;
         UIManager.Instance.HideMainMenu();
+        audioText.SetActive(false);
+        audioSlider.gameObject.SetActive(false);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+        UIManager.Instance.ShowPauseMenu();
+        audioText.SetActive(true);
+        audioSlider.gameObject.SetActive(true);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        UIManager.Instance.HidePauseControlsMenu();
+        UIManager.Instance.HidePauseMenu();
         audioText.SetActive(false);
         audioSlider.gameObject.SetActive(false);
     }
