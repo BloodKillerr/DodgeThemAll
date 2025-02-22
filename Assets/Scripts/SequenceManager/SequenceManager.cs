@@ -28,8 +28,6 @@ public class SequenceManager : MonoBehaviour
 
     [SerializeField] private GameObject sequenceItemPrefab = null;
 
-    [SerializeField] private Transform sequenceItemsPlaceholder;
-
     public List<SequenceItem> Sequence { get => sequence; set => sequence = value; }
 
     public int sequenceMaxSize;
@@ -63,7 +61,7 @@ public class SequenceManager : MonoBehaviour
         }
 
         sequence.Add(item);
-        GameObject go = Instantiate(sequenceItemPrefab, sequenceItemsPlaceholder);
+        GameObject go = Instantiate(sequenceItemPrefab, Player.Instance.SequenceItemsPlaceholder);
         go.GetComponent<Image>().sprite = UIManager.Instance.GetCorrectIcon(item);
         sequenceItemIconObjects.Add(go);
         audioSpawner.SpawnAudioObject(Player.Instance.gameObject.transform);
@@ -71,7 +69,7 @@ public class SequenceManager : MonoBehaviour
 
     public void ResetSequence()
     {
-        foreach (Transform child in sequenceItemsPlaceholder)
+        foreach (Transform child in Player.Instance.SequenceItemsPlaceholder)
         {
             Destroy(child.gameObject);
         }
@@ -103,5 +101,13 @@ public class SequenceManager : MonoBehaviour
 
         wallSetSpeed += 2;
         DifficultyUpdateEvent.Invoke();
+    }
+
+    public void ResetState()
+    {
+        sequenceItemIconObjects.Clear();
+        sequence.Clear();
+        sequenceMaxSize = 2;
+        wallSetSpeed = 10f;
     }
 }

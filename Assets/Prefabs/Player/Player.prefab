@@ -187,10 +187,6 @@ MonoBehaviour:
         m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 89b2d4e2-0953-49e0-ab9a-337600f7df13
-    m_ActionName: UI/New action
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5651122721193498574}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
@@ -254,6 +250,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9f13f88d-27fa-4efc-aade-b484a6e8341f
     m_ActionName: 'Player/ResetSeq[/Keyboard/r,/XInputControllerWindows/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 61c49d77-35b0-440a-bd56-1b34d28d3a5f
+    m_ActionName: 'UI/PauseResume[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: KeyBoardMouse
   m_DefaultActionMap: Player
@@ -332,6 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a0c8af592d6b264fae59c9eba5d6490, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sequenceItemsPlaceholder: {fileID: 622857375041161511}
 --- !u!114 &1607041784734633572
 MonoBehaviour:
   m_ObjectHideFlags: 0

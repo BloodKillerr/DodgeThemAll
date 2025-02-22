@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Slider audioSlider;
     [SerializeField] private GameObject audioText;
+    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private Transform objectsHolder;
 
     public static GameManager Instance { get; private set; }
 
@@ -89,6 +91,25 @@ public class GameManager : MonoBehaviour
         audioSlider.gameObject.SetActive(false);
     }
 
+    public void LoseGame()
+    {
+        Time.timeScale = 0f;
+        isPaused = true;
+        UIManager.Instance.ShowRestartMenu();
+        audioText.SetActive(true);
+        audioSlider.gameObject.SetActive(true);
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        UIManager.Instance.HideRestartMenu();
+        audioText.SetActive(false);
+        audioSlider.gameObject.SetActive(false);
+        ResetGameState();
+    }
+
     public void Quit()
     {
         Application.Quit();
@@ -105,5 +126,13 @@ public class GameManager : MonoBehaviour
     {
         audioSlider.value = PlayerPrefs.GetFloat("volume");
         SetVolume();
+    }
+
+    private void ResetGameState()
+    {
+        Instantiate(playerPrefab, new Vector3(-2.5f, 0, 5), Quaternion.identity, objectsHolder);
+        SequenceManager.Instance.ResetState();
+        WallSpawner.Instance.ResetWalls();
+        PointSystem.Instance.ResetPointsSystem();
     }
 }

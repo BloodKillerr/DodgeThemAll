@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private CanvasGroup pauseMenu;
     [SerializeField] private CanvasGroup controlsMenu;
     [SerializeField] private CanvasGroup pauseControlsMenu;
+    [SerializeField] private CanvasGroup restartMenu;
 
     public UnityEvent IconsUpdateEvent;
 
@@ -114,5 +115,19 @@ public class UIManager : MonoBehaviour
         pauseControlsMenu.alpha = 0f;
         pauseControlsMenu.interactable = false;
         pauseControlsMenu.blocksRaycasts = false;
+    }
+
+    public void ShowRestartMenu()
+    {
+        restartMenu.alpha = 1f;
+        restartMenu.interactable = true;
+        restartMenu.blocksRaycasts = true;
+    }
+
+    public void HideRestartMenu()
+    {
+        restartMenu.alpha = 0f;
+        restartMenu.interactable = false;
+        restartMenu.blocksRaycasts = false;
     }
 }

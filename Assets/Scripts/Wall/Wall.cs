@@ -28,25 +28,19 @@ public class Wall : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Detected");
             if (SequenceManager.Instance.CompareSequences(sequence))
             {
-                Debug.Log("Correct Sequence!");
                 SequenceManager.Instance.ResetSequence();
                 Destroy(gameObject.transform.parent.gameObject);
                 PointSystem.Instance.IncreasePoints();
             }
             else
             {
-                Debug.Log("Wrong Sequence!");
                 Destroy(other.gameObject);
                 PointSystem.Instance.SaveMaxPoints();
+                GameManager.Instance.LoseGame();
             }
             audioSpawner.SpawnAudioObject(Player.Instance.gameObject.transform);
-        }
-        else
-        {
-            Debug.Log("Player not Detected");
         }
     }
 

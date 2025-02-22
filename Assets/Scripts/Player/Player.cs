@@ -3,9 +3,12 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    public static Player Instance { get; private set; }
-
     private SequenceManager sequenceManager;
+
+    [SerializeField] private Transform sequenceItemsPlaceholder;
+
+    public static Player Instance { get; private set; }
+    public Transform SequenceItemsPlaceholder { get => sequenceItemsPlaceholder; set => sequenceItemsPlaceholder = value; }
 
     private void Awake()
     {

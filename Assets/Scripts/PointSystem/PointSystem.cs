@@ -78,4 +78,12 @@ public class PointSystem : MonoBehaviour
             SequenceManager.Instance.UpdateGameDifficulty();
         }
     }
+
+    public void ResetPointsSystem()
+    {
+        points = 0;
+        difficultyThreshold = 10;
+        difficultyLevel = 1;
+        PointSystemUpdateEvent.Invoke();
+    }
 }
