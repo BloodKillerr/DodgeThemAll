@@ -16,6 +16,8 @@ public class Wall : MonoBehaviour
 
     [SerializeField] private Transform sequenceItemsPlaceholder;
 
+    [SerializeField] private GameObject wallVFX;
+
     private void Start()
     {
         audioSpawner = GetComponent<AudioSpawner>();
@@ -33,6 +35,8 @@ public class Wall : MonoBehaviour
                 SequenceManager.Instance.ResetSequence();
                 Destroy(gameObject.transform.parent.gameObject);
                 PointSystem.Instance.IncreasePoints();
+                GameObject go = Instantiate(wallVFX, transform.position + new Vector3(0, 2f, 0), Quaternion.identity);
+                Destroy(go, 5f);
             }
             else
             {

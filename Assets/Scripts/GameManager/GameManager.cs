@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private Transform objectsHolder;
 
+    private int targetFrameRate = 120;
+
     public static GameManager Instance { get; private set; }
 
     private bool isPaused = false;
@@ -36,7 +38,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if(PlayerPrefs.HasKey("volume"))
+        Application.targetFrameRate = targetFrameRate;
+        if (PlayerPrefs.HasKey("volume"))
         {
             LoadVolume();
         }
@@ -94,7 +97,7 @@ public class GameManager : MonoBehaviour
     public void LoseGame()
     {
         Time.timeScale = 0f;
-        isPaused = true;
+        isPlaying = false;
         UIManager.Instance.ShowRestartMenu();
         audioText.SetActive(true);
         audioSlider.gameObject.SetActive(true);
@@ -103,7 +106,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        isPaused = false;
+        isPlaying = true;
         UIManager.Instance.HideRestartMenu();
         audioText.SetActive(false);
         audioSlider.gameObject.SetActive(false);

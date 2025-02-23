@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 
     public static Player Instance { get; private set; }
     public Transform SequenceItemsPlaceholder { get => sequenceItemsPlaceholder; set => sequenceItemsPlaceholder = value; }
+    public PlayerInput PlayerInput { get => playerInput; set => playerInput = value; }
+
+    private PlayerInput playerInput;
 
     private void Awake()
     {
@@ -24,6 +27,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         sequenceManager = SequenceManager.Instance;
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.controlsChangedEvent.AddListener(InputManager.Instance.UpdateLastUsedDevice);
+        playerInput.actions["PauseResume"].performed += GameManager.Instance.PauseResumeEvent;
     }
 
     public void ArrowsEvent(InputAction.CallbackContext context)

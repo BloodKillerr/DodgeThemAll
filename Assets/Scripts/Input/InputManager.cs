@@ -6,8 +6,6 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    private PlayerInput playerInput;
-
     [SerializeField] private string lastUsedDevice = "Keyboard";
 
     public string LastUsedDevice { get => lastUsedDevice; set => lastUsedDevice = value; }
@@ -26,8 +24,7 @@ public class InputManager : MonoBehaviour
 
     void Start()
     {
-        playerInput = Player.Instance.gameObject.GetComponent<PlayerInput>();
-        UpdateLastUsedDevice(playerInput);
+
     }
 
     public void UpdateLastUsedDevice(PlayerInput playerInput)

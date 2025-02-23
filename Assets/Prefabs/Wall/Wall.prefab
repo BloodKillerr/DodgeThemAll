@@ -340,6 +340,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sequenceItemPrefab: {fileID: 6740245059156436874, guid: fe49beda253adef4cb54a28cdd799acc, type: 3}
   sequenceItemsPlaceholder: {fileID: 5699832665821872074}
+  wallVFX: {fileID: 8009749491265219132, guid: 1a52d6099c06c1d47809376393c96bdd, type: 3}
+  playerVFX: {fileID: 8009749491265219132, guid: 6c93b93ae67779a479992f654258ece6, type: 3}
 --- !u!65 &979669183848264920
 BoxCollider:
   m_ObjectHideFlags: 0
