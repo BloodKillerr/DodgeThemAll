@@ -55,6 +55,11 @@ public class SequenceManager : MonoBehaviour
 
     public void AddToSequence(SequenceItem item)
     {
+        if(!GameManager.Instance.IsPlaying || GameManager.Instance.IsPaused)
+        {
+            return;
+        }
+
         if(sequence.Count == sequenceMaxSize)
         {
             return;
@@ -69,6 +74,11 @@ public class SequenceManager : MonoBehaviour
 
     public void ResetSequence()
     {
+        if (!GameManager.Instance.IsPlaying || GameManager.Instance.IsPaused)
+        {
+            return;
+        }
+
         foreach (Transform child in Player.Instance.SequenceItemsPlaceholder)
         {
             Destroy(child.gameObject);

@@ -92,6 +92,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.HidePauseMenu();
         audioText.SetActive(false);
         audioSlider.gameObject.SetActive(false);
+        audioSlider.enabled = true;
     }
 
     public void LoseGame()
